@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//prefix: Admin related will be /admin
+Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin'] ], function(){
+    Route::get('/login', [AdminController::class, 'loginForm']);
+    Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
+});
+
+
+// Admin Guard
+Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+// Web Guard
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
