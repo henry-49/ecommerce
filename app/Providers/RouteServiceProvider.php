@@ -19,6 +19,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard';
 
+    // Static method to redirect guards
+    public static function redirectTo($guards){
+
+        // example: admin/dashboard or user/dashboard
+        return $guards.'/dashboard';
+    }
+
     /**
      * The controller namespace for the application.
      *
