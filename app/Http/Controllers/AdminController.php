@@ -44,7 +44,7 @@ class AdminController extends Controller
     public function loginForm()
     {
         // Login using admin guard
-        return view('auth.login', ['guard' => 'admin']);
+        return view('auth.admin_login', ['guard' => 'admin']);
     }
     /**
      * Show the login view.
