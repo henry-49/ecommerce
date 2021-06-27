@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin'] ], function()
 
 // Admin Route
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
 
 
 
