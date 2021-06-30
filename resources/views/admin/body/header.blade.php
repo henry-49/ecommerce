@@ -100,6 +100,10 @@
 			  </li>
 			</ul>
 		  </li>	
+
+		  @php
+			$adminData = DB::table('admins')->first();
+		  @endphp
 		  
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
