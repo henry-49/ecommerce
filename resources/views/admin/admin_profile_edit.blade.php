@@ -2,9 +2,8 @@
 
 @section('admin_content')
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container-full">
-
 
 <section class="content">
 
@@ -48,12 +47,12 @@
                             <h5>Profile Image <span class="text-danger">*</span></h5>
                             <div class="controls">
                                 <input type="file" name="profile_photo_path" class="form-control" 
-                                required=""> <div class="help-block"></div>
+                                required="" id="image">
                             </div>
                         </div>
                     </div> <!--  end col md 6 -->    
                      <div class="col-md-6">
-                        <img  src="{{ (!empty($adminData->profile_photo_path))? 
+                        <img id="showImage" src="{{ (!empty($adminData->profile_photo_path))? 
                                 url('upload/admin_images/'.$adminData->profile_photo_path): url('upload/no_image.jpg') }} "
                                 alt="User Avatar" style="width:100px; height:100px;">
                         </div>
@@ -63,6 +62,9 @@
                   
                <div class="text-xs-right">
                    <input type="submit" class="btn btn-rounded btn-primary md-5"  value="Update"/>
+               </div>
+               <div class="text-xs-right ml-3">
+                   <a href="{{ route('admin.profile') }}" class="btn btn-rounded btn-info md-5">Back</a>
                </div>
            </form>
 
@@ -77,7 +79,19 @@
 
 </section>
 
-
-
 </div>
+
+
+<!-- Script to display image on uplaod -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endsection

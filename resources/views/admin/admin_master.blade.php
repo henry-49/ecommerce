@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href=" {{ asset('backend/images/favicon.ico') }}">
+	
 
     <title>TZNH Ecommerce Admin - Dashboard</title>
     
