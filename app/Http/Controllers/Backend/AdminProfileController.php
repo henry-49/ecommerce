@@ -46,8 +46,15 @@ class AdminProfileController extends Controller
         // save all data
         $data->save();
 
+          // Using Toastr Js
+          $notification = array(
+            'message' => 'Admin Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+
         // return back to admin profile after update
-        return redirect()->route('admin.profile');
+        return redirect()->route('admin.profile')->with($notification);
     }
 
 
