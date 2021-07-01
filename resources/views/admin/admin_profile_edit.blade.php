@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <h5>Admin User Name<span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                <input type="test" name="name" class="form-control" 
+                                <input type="text" name="name" class="form-control" 
                                 required=""  value="{{ $editData->name}}"></div>
                             </div>
                        </div> <!--  end col md 6 -->
