@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Frontend\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Http\Controllers\Backend\AdminProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //prefix: Admin related will be /admin
 Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin'] ], function(){
@@ -43,7 +44,12 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 })->name('dashboard');
 
 
+
+// User All Route
 // Web Guard
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/', [IndexController::class, 'index']);
