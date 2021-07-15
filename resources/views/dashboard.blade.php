@@ -8,13 +8,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2"><br>
-                <img src="{{ (!empty($editData->profile_photo_path))? 
-                                url('upload/admin_images/'.$editData->profile_photo_path): url('upload/no_image.jpg') }}"
+                <img src="{{ (!empty($user->profile_photo_path))? 
+                                url('upload/user_images/'.$user->profile_photo_path): url('upload/no_image.jpg') }}"
                                 alt="User Avatar" width="100%" height="100%"
                                 class="card-img-top" style="border-radius: 50%"><br><br>
                                 <ul class="list-group list-group-flush">
                                     <a href="" class="btn btn-primary btn-sm btn-block">Home</a>
-                                    <a href="" class="btn btn-primary btn-sm btn-block">Profile Update</a>
+                                    <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
                                     <a href="" class="btn btn-primary btn-sm btn-block">Change Password</a>
                                     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
                                 </ul>
