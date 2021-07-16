@@ -3,6 +3,9 @@
 
 @section('content')
 
+<!-- @php
+$user = DB::table('users')->where('id', Auth::user()->id)->first();
+@endphp -->
 
 <div class="body-content">
     <div class="container">
@@ -15,7 +18,7 @@
                                 <ul class="list-group list-group-flush">
                                     <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
                                     <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
-                                    <a href="" class="btn btn-primary btn-sm btn-block">Change Password</a>
+                                    <a href="{{ route('user.change.password') }}" class="btn btn-primary btn-sm btn-block">Change Password</a>
                                     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
                                 </ul>
             </div> <!-- end col-md-2 -->
@@ -66,7 +69,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                               <button type="submit" class="btn btn-danger">Update</button>
+                               <button type="submit" class="btn btn-primary">Update</button>
                                <a href="{{route('dashboard')}}" class="btn btn-info">Back</a>
                             </div>
                         </form>
